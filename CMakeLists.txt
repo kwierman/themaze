@@ -31,19 +31,35 @@ set(CMAKE_MODULE_PATH $ENV{ART_DIR}/Modules
 include(CetCMakeEnv)
 cet_cmake_env()
 
+
 cet_set_compiler_flags(DIAGS CAUTIOUS
   WERROR
   NO_UNDEFINED
-  EXTRA_FLAGS -pedantic
-  EXTRA_CXX_FLAGS -std=c++11 )
+  ALLOW_DEPRECATIONS
+  EXTRA_FLAGS -pedantic -Wno-unused-local-typedefs
+)
 
 cet_report_compiler_flags()
 
+
 # these are minimum required versions, not the actual product versions
+find_ups_product( larcore v1_00_00 )
+find_ups_product( larcoreobj )
+find_ups_product( lardata v1_00_00 )
+find_ups_product( lardataobj )
+find_ups_product( larevt v1_00_00 )
+find_ups_product( larsim v1_00_00 )
+find_ups_product( larreco v1_00_00 )
+find_ups_product( larpandora v1_00_00 )
+find_ups_product( larana v1_00_00 )
+find_ups_product( larpandora v1_00_00 )
 find_ups_product( larsoft v1_00_00 )
 find_ups_product( nutools v1_00_00 )
 find_ups_product( art v1_08_00 )
 find_ups_product( cetbuildtools v4_14_01 )
+find_ups_product( nutools v1_00_00 )
+find_ups_boost( v1_53_0 )
+
 
 # macros for dictionary and simple_plugin
 include(ArtDictionary)

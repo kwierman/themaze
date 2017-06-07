@@ -1,3 +1,6 @@
 # The Maze
 
-The maze was not meant for you.
+The maze is not meant for you.
+
+
+Also the maze currently does not support photons.

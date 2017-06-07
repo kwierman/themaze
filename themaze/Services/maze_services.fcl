@@ -1,0 +1,43 @@
+#include "maze_geometry.fcl"
+#include "detectorproperties.fcl"
+#include "larproperties.fcl"
+#include "detectorclocks.fcl"
+#include "backtracker.fcl"
+#include "spacecharge.fcl"
+#include "seedservice.fcl"
+#include "simulationservices.fcl"
+#include "magfield_larsoft.fcl"
+#include "photpropservices.fcl"
+#include "larfft.fcl"
+#include "triggeralgo_service.fcl "
+
+BEGIN_PROLOG
+
+maze_basic_services:
+{
+ ExptGeoHelperInterface:         @local::maze_geometry_helper
+ Geometry:                       @local::maze_geometry
+ DetectorPropertiesService:      @local::standard_detproperties
+ LArPropertiesService:           @local::standard_properties
+ DetectorClocksService:          @local::standard_detectorclocks
+ SpaceCharge:                    @local::standard_spacecharge
+ NuRandomService:                @local::random_NuRandomService
+ LArG4Parameters:                @local::standard_largeantparameters
+ LArVoxelCalculator:             @local::standard_larvoxelcalculator
+ MagneticField:                  @local::no_mag_larsoft
+ PhotonVisibilityService:        @local::standard_photonvisibilityservice
+ LArFFT:                         @local::standard_larfft
+ TriggerAlgo:                    @local::standard_triggeralgo
+}
+
+maze_basic_services.LArG4Parameters.UseCustomPhysics:  true
+maze_basic_services.LArG4Parameters.EnabledPhysics:    [ "Em",
+                                                            "SynchrotronAndGN",
+                                                            "Ion",
+                                                            "Hadron",
+                                                            "Decay",
+                                                            "HadronElastic",
+                                                            "Stopping"]
+
+
+END_PROLOG

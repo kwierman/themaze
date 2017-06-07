@@ -1,20 +1,8 @@
-# This @product_deps@ file defines dependencies for this package. 
 
-# The *parent* line must the first non-commented line and defines this product and version
-# The version should be of the form vxx_yy_zz (e.g. v01_02_03)
 parent themaze v01_00_00
 defaultqual e14
 
-# These optional lines define the installed directories where headers,
-# libraries, and executables will be found.
-# Use them only if your product does not conform to the defaults
-#
-# Format: directory_type directory_path directory_name
-#
-# The only recognized values of the first field are fcldir, gdmldir, incdir, libdir, and bindir
-# The only recognized values of the second field are product_dir, fq_dir, and -
-# The third field is not constrained.
-#
+
 # Defaults:
 # incdir  product_dir  include
 # fcldir  product_dir  fcl
@@ -27,26 +15,23 @@ incdir	product_dir	include
 libdir	fq_dir		lib
 bindir	fq_dir		bin
 flcdir  product_dir     fcl
+gdmldir product_dir gdml
 
-# With "product  version" table below, we now define depdendencies
-# Add the dependent product and version
+table_fragment_begin
+    pathPrepend(FW_SEARCH_PATH, ${UBOONECODE_DIR}/scripts)
+    pathPrepend(FW_SEARCH_PATH, ${UBOONECODE_DIR}/gdml)
+    pathPrepend(FHICL_FILE_PATH, .:./job)
+table_fragment_end
 
 product          version
-themaze		v01_00_00
-gcc		v4_8_1
-cetbuildtools   v3_07_11       -       only_for_build
+themaze         v01_00_00
+larsoft         v06_38_00
+cetbuildtools   v5_06_07       -       only_for_build
 end_product_list
 
-# We now define allowed qualifiers and the corresponding qualifiers for the depdencies.
-# Make a table by adding columns before "notes". 
-qualifier	larsoft	 	gcc	notes
-e14:debug	e14:debug	-nq-
-e14:opt		e14:opt		-nq-
-e14:prof		e14:prof		-nq-
+qualifier	larsoft	 		notes
+e14:debug	e14:debug	
+e14:opt		e14:opt		
+e14:prof		e14:prof
 end_qualifier_list
 
-# Preserve tabs and formatting in emacs and vi / vim:
-
-### Local Variables:
-### tab-width: 8
-### End:

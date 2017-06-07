@@ -1,0 +1,17 @@
+
+BEGIN_PROLOG
+
+maze_geometry_helper:
+{
+ service_provider : MazeGeometryHelper
+}
+
+maze_geometry:
+{
+ Name:            "the_maze"
+ GDML:            "the_maze.gdml"
+ ROOT:            "the_maze.gdml"
+ SurfaceY:        6.9e2
+}
+
+END_PROLOG
